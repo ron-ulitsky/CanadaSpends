@@ -1,0 +1,69 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.*
+.yarn/*
+
+# Build outputs
+.next
+out
+build
+
+# Version control
+.git
+.gitignore
+
+# Environment files (use docker-compose env_file instead)
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Testing
+coverage
+
+# Temporary files
+tmp/
+*.tmp
+*.temp
+
+# Scrapers temporary data
+scrapers/*/tmp/
+scrapers/data
+
+# Large PDF files (not needed for development server)
+PublicAccountsPDFs/
+
+# Cache
+node-compile-cache/
+.eslintcache
+*.tsbuildinfo
+
+# Docker files (no need to copy into container)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Documentation not needed in container
+*.md
+!README.md
+
+# License
+LICENSE

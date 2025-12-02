@@ -18,9 +18,67 @@ By the end of 2025, we aim to have automated data ingestion pipelines for every 
 
 ## Getting Started
 
-Canada Spends is a NextJS app. To run it, run:
+Canada Spends is a NextJS app. You can run it either with Docker (recommended) or directly with pnpm.
 
+### Option 1: Docker (Recommended)
+
+Docker provides a consistent development environment across all team members.
+
+**Prerequisites:**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+
+**Setup:**
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/BuildCanada/CanadaSpends.git
+   cd CanadaSpends
+   ```
+
+2. Copy the environment template (optional - only needed for analytics/newsletter features):
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. Start the development server:
+   ```bash
+   docker compose up
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+**Useful Docker Commands:**
+```bash
+# Start the development server
+docker compose up
+
+# Start in detached mode (runs in background)
+docker compose up -d
+
+# Rebuild and start (after Dockerfile changes)
+docker compose up --build
+
+# Stop the containers
+docker compose down
+
+# View logs
+docker compose logs -f app
+
+# Execute commands inside the container
+docker compose exec app pnpm lint
+docker compose exec app pnpm format
 ```
+
+### Option 2: Local pnpm Installation
+
+If you prefer not to use Docker, you can run the app directly:
+
+**Prerequisites:**
+- Node.js 20+ installed
+- pnpm 9.5.0+ installed (`corepack enable && corepack prepare pnpm@9.5.0 --activate`)
+
+**Setup:**
+```bash
 pnpm install
 pnpm run dev
 ```
