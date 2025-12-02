@@ -13,7 +13,9 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+# Note: Using regular install (not --frozen-lockfile) in dev to allow
+# package.json changes without manually updating lockfile
+RUN pnpm install
 
 # Copy configuration files needed for the build
 COPY tsconfig.json ./

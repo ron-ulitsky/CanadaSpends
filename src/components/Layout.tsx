@@ -21,9 +21,9 @@ export const GraphMock = ({
   department?: string;
   className?: string;
 }) => (
-  <div className="mt-8 max-w-5xl mx-auto bg-white rounded-xl shadow-chart slide-up slide-up-delay-2">
+  <div className="mt-8 max-w-5xl mx-auto bg-card rounded-xl shadow-chart slide-up slide-up-delay-2">
     <div
-      className={`w-full h-80 bg-gray-600 text-white flex items-center justify-center`}
+      className={`w-full h-80 bg-muted text-muted-foreground flex items-center justify-center`}
     >
       {department} {text ?? "Graph"}
     </div>
@@ -57,7 +57,7 @@ export const H3 = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <h3 className={`text-xl text-gray-600 font-bold mb-6 ${className}`}>
+  <h3 className={`text-xl text-muted-foreground font-bold mb-6 ${className}`}>
     {children}
   </h3>
 );
@@ -77,7 +77,7 @@ export const P = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <p className={`text-gray-600 leading-relaxed mb-4 ${className}`}>
+  <p className={`text-muted-foreground leading-relaxed mb-4 ${className}`}>
     {children}
   </p>
 );
@@ -90,7 +90,7 @@ export const UL = ({
   className?: string;
 }) => (
   <ul
-    className={`text-gray-600 leading-relaxed mb-4 list-disc list-inside ${className}`}
+    className={`text-muted-foreground leading-relaxed mb-4 list-disc list-inside ${className}`}
   >
     {children}
   </ul>
@@ -105,7 +105,7 @@ export const Intro = ({
 }) => <P className={`mt-4 text-lg ${className}`}>{children}</P>;
 
 export const Page = ({ children }: { children: React.ReactNode }) => (
-  <div className="min-h-screen bg-[#f8fafc]">{children}</div>
+  <div className="min-h-screen bg-background">{children}</div>
 );
 
 export const PageContent = ({
@@ -133,7 +133,7 @@ export const ExternalLink = ({
 }) => (
   <a
     href={href}
-    className={`text-blue-500 underline hover:text-blue-600 ${className}`}
+    className={`text-primary underline hover:text-primary/80 ${className}`}
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -158,7 +158,7 @@ export const InternalLink = ({
   return (
     <Link
       href={localizedHref}
-      className={`text-blue-500 underline hover:text-blue-600 ${className}`}
+      className={`text-primary underline hover:text-primary/80 ${className}`}
     >
       {children}
     </Link>

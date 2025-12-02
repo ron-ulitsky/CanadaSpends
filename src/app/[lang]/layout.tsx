@@ -1,5 +1,6 @@
 import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/components/LinguiClientProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { initLingui, PageLangParam } from "@/initLingui";
 import { cn } from "@/lib/utils";
 import { useLingui } from "@lingui/react/macro";
@@ -72,17 +73,24 @@ export default async function RootLayout({
   initLingui(lang);
 
   return (
-    <html lang={lang}>
-      <body className={cn("antialiased", plusJakartaSans.className)}>
-        <PostHogProvider>
-          <LinguiClientProvider
-            initialLocale={lang}
-            initialMessages={allMessages[lang]!}
-          >
-            {children}
-            <Toaster position="top-right" richColors />
-          </LinguiClientProvider>
-        </PostHogProvider>
+    <html lang={lang} suppressHydrationWarning>
+      <body
+        className={cn(
+          "antialiased transition-colors duration-200",
+          plusJakartaSans.className,
+        )}
+      >
+        <ThemeProvider>
+          <PostHogProvider>
+            <LinguiClientProvider
+              initialLocale={lang}
+              initialMessages={allMessages[lang]!}
+            >
+              {children}
+              <Toaster position="top-right" richColors />
+            </LinguiClientProvider>
+          </PostHogProvider>
+        </ThemeProvider>
         <Analytics />
         {/* Simple Analytics Script */}
         <script
