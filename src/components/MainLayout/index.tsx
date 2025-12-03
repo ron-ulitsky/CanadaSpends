@@ -88,12 +88,12 @@ export const MainLayout = ({
               href={`/${i18n.locale}`}
             >
               <Image
-                className="cursor-pointer align-middle w-40 h-12 max-w-full hidden sm:block"
+                className="cursor-pointer align-middle w-40 h-12 max-w-full hidden sm:block dark:invert"
                 alt="Canada Spends Logo"
                 src={logoFull}
               />
               <Image
-                className="cursor-pointer align-middle inline-block w-40 h-12 max-w-full sm:hidden min-w-[75px]"
+                className="cursor-pointer align-middle inline-block w-40 h-12 max-w-full sm:hidden min-w-[75px] dark:invert"
                 alt="Canada Spends Logo"
                 src={logoGlyph}
               />

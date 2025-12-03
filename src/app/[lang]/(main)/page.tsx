@@ -15,7 +15,7 @@ export default async function Page(props: PageLangParam) {
   initLingui(lang);
   return (
     <>
-      <section className="border-b-gray-200 border-b-2 flex-col justify-center relative flex overflow-hidden border-solid">
+      <section className="border-b border-border flex-col justify-center relative flex overflow-hidden">
         <div className="px-4 py-0">
           <div className="items-center flex-col auto-cols-fr grid-cols-[.5fr_1.5fr_.5fr] grid-rows-[50px_auto_auto] justify-center justify-items-stretch text-center grid min-h-[88vh] py-0">
             <div
@@ -48,32 +48,32 @@ export default async function Page(props: PageLangParam) {
                 </div>
                 <div className="flex gap-4">
                   <Link
-                    className="text-white bg-indigo-950 hover:bg-indigo-900 items-center font-medium justify-center py-2 px-4 relative flex w-auto min-w-[7.00rem] max-w-full overflow-hidden"
-                    href={localizedPath(
-                      IS_BUDGET_2025_LIVE ? "/budget" : "/spending",
-                      lang,
-                    )}
-                  >
-                    <div className="items-center cursor-pointer justify-center relative flex overflow-hidden">
-                      <div className="items-center justify-center flex p-1">
-                        {IS_BUDGET_2025_LIVE ? (
-                          <Trans>Explore Budget 2025</Trans>
-                        ) : (
-                          <Trans>Explore federal data</Trans>
-                        )}
+                      className="text-primary-foreground bg-primary hover:bg-primary/90 items-center font-medium justify-center py-2 px-4 relative flex w-auto min-w-[7.00rem] max-w-full overflow-hidden"
+                      href={localizedPath(
+                        IS_BUDGET_2025_LIVE ? "/budget" : "/spending",
+                        lang,
+                      )}
+                    >
+                      <div className="items-center cursor-pointer justify-center relative flex overflow-hidden">
+                        <div className="items-center justify-center flex p-1">
+                          {IS_BUDGET_2025_LIVE ? (
+                            <Trans>Explore Budget 2025</Trans>
+                          ) : (
+                            <Trans>Explore federal data</Trans>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                  <Link
-                    className="text-indigo-950 bg-white border-indigo-950 border-2 hover:bg-gray-100 items-center font-medium justify-center py-2 px-4 relative flex w-auto min-w-[7.00rem] max-w-full overflow-hidden"
-                    href={localizedPath("/ontario", lang)}
-                  >
-                    <div className="items-center cursor-pointer justify-center relative flex overflow-hidden">
-                      <div className="items-center justify-center flex p-1">
-                        <Trans>Explore Ontario data</Trans>
+                    </Link>
+                    <Link
+                      className="text-foreground bg-background border-foreground border-2 hover:bg-accent items-center font-medium justify-center py-2 px-4 relative flex w-auto min-w-[7.00rem] max-w-full overflow-hidden"
+                      href={localizedPath("/ontario", lang)}
+                    >
+                      <div className="items-center cursor-pointer justify-center relative flex overflow-hidden">
+                        <div className="items-center justify-center flex p-1">
+                          <Trans>Explore Ontario data</Trans>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default async function Page(props: PageLangParam) {
           </div>
         </div>
       </section>
-      <div className="border-b-gray-200 border-b-2 pb-20">
+      <div className="border-b border-border pb-20">
         <PageContent>
           <Section className="items-center flex-col justify-center flex ">
             <H2 className="text-5xl font-medium">
@@ -114,7 +114,7 @@ export default async function Page(props: PageLangParam) {
           </Section>
         </PageContent>
       </div>
-      <div className="border-b-gray-200 border-b-2 pb-20">
+      <div className="border-b border-border pb-20">
         <PageContent>
           <Section>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -169,10 +169,13 @@ export default async function Page(props: PageLangParam) {
         </PageContent>
       </div>
       <PageContent>
-        <Section className="bg-[#fafafa]">
-          <NoSSR>
-            <TwitterFeed />
-          </NoSSR>
+        <Section>
+          {/* Twitter embed needs a light background since it doesn't support dark mode */}
+          <div className="bg-white rounded-lg p-4 shadow-sm">
+            <NoSSR>
+              <TwitterFeed />
+            </NoSSR>
+          </div>
         </Section>
       </PageContent>
     </>

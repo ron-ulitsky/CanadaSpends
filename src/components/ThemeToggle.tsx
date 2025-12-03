@@ -1,13 +1,13 @@
 "use client";
 
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/button";
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   // Avoid hydration mismatch by only rendering after mount
   useEffect(() => {
@@ -24,29 +24,29 @@ export function ThemeToggle() {
     );
   }
 
-  const cycleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else if (theme === "dark") {
-      setTheme("system");
-    } else {
-      setTheme("light");
-    }
+  // Toggle between light and dark only
+  // Uses resolvedTheme to get the actual theme (handles system preference)
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <Button
       variant="ghost"
       size="icon"
       className="h-9 w-9"
-      onClick={cycleTheme}
-      title={`Current theme: ${theme}. Click to change.`}
+      onClick={toggleTheme}
+      title={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {theme === "light" && <Sun className="h-4 w-4" />}
-      {theme === "dark" && <Moon className="h-4 w-4" />}
-      {theme === "system" && <Monitor className="h-4 w-4" />}
+      {isDark ? (
+        <Moon className="h-4 w-4" />
+      ) : (
+        <Sun className="h-4 w-4" />
+      )}
       <span className="sr-only">
-        Toggle theme (currently {theme})
+        Switch to {isDark ? "light" : "dark"} mode
       </span>
     </Button>
   );
