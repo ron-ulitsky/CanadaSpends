@@ -27,9 +27,6 @@ services:
       - /app/node_modules
       # Persist .next build cache
       - /app/.next
-    env_file:
-      - path: .env.local
-        required: false
     environment:
       - NODE_ENV=development
       - NEXT_TELEMETRY_DISABLED=1
